@@ -1,29 +1,11 @@
 // Include libraries and functions
 
 // functions
-double Polrfm(double C,double L,double B, double H) {
+double Polrfm(double rpc[20],double l,double b, double h) {
 double somatorio;
-somatorio= (L*(B+B*H)+(B+L+1)*(1+H)+(L*L+B*B+H*H)*(1+B+H+L))*C
+somatorio=rpc[0]+(rpc[1]*l)+(rpc[2]*b)+(rpc[3]*h)+(rpc[4]*l*b)
+        +(rpc[5]*l*h)+(rpc[6]*b*h)+(rpc[7]*l*l)+(rpc[8]*b*b)+(rpc[9]*h*h)
+        +(rpc[10]*b*l*h)+(rpc[11]*l*l*l)+(rpc[12]*l*b*b)+(rpc[13]*l*h*h)+(rpc[14]*l*l*b)
+        +(rpc[15]*b*b*b)+(rpc[16]*b*h*h)+(rpc[17]*l*l*h)+(rpc[18]*b*b*h)+(rpc[19]*h*h*h);
+return somatorio;
 };
-
-original = 19 somas e 45 multiplicaçoes 64 passos
-marcel= 19 somas e 27 multiplicaçoes    46 passos
-Pedro1= 13 somas 8 multiplicaçoes       21 passos
-Pedro2= 10 somas 8 multiplicações       18 passos
-
-Pedro1=(1+ L*(1+B+H+B*H)+B*(1+H)+H+(L*L+B*B+H*H)*(1+B+H+L))*C
-
-C0 + C1L + C4LB + C5LH + C10BLH + C2B +C6BH +C3H + 
-C7LL + C14LLB + C17LLH + C11LLL +
-C8BB + C15BBB + C18BBH + C12BBL +
-C9HH + C16HHB + C19HHH + C13HHL
-  
-
-  0-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18-19
-
-Pedro2=(L*(B+B*H)+(B+L+1)*(1+H)+(L*L+B*B+H*H)*(1+B+H+L))*C
-
-C4LB + C10BLH + C2B + C6BH + C1L + C5LH + C0 + C3H +
-C7LL + C14LLB + C17LLH + C11LLL +
-C8BB + C15BBB + C18BBH + C12BBL +
-C9HH + C16HHB + C19HHH + C13HHL
