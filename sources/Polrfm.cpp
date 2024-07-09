@@ -1,6 +1,46 @@
-// Include libraries and functions
+#include <stdio.h>
+double Polrfm(double rpc[20], double l, double b, double h);
 
-// functions
+int main() {
+  // Declaração do vetor para armazenar os valores double
+  double coeficientes[20];
+
+  // Abre o arquivo para leitura
+  FILE *arquivo;
+  arquivo = fopen("coef_a1.txt", "r");
+
+  // Verifica se o arquivo foi aberto com sucesso
+  if (arquivo == NULL) {
+    printf("Erro ao abrir o arquivo!\n");
+    return 1;
+  }
+
+  // Lê os valores double do arquivo e armazena no vetor
+  int i;
+  for (i = 0; i < 20; i++) {
+    fscanf(arquivo, "%lf", &coeficientes[i]);
+  }
+
+  // Fecha o arquivo
+  fclose(arquivo);
+
+  // Imprime os valores do vetor (opcional)
+  for (i = 0; i < 20; i++) {
+    printf("\n %lf ", coeficientes[i]);
+  }
+
+  printf("\n");
+  
+	double l=0,b=0,h=0,resultado=0;
+	resultado = Polrfm(coeficientes, l, b, h);
+
+	printf("O resultado do polinomio : %lf\n", resultado);
+  
+  
+
+  return 0;
+}
+
 double Polrfm(double rpc[20],double l,double b, double h) {
 double somatorio;
 somatorio=rpc[0]+(rpc[1]*l)+(rpc[2]*b)+(rpc[3]*h)+(rpc[4]*l*b)
